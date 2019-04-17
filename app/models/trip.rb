@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 class Trip < ApplicationRecord
-  has_many :passengers
-  has_many :drivers
+  belongs_to :passenger
+  belongs_to :driver
 end
