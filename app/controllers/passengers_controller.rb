@@ -5,6 +5,7 @@ class PassengersController < ApplicationController
 
   def show
     @passenger = Passenger.find_by(id: params[:id])
+    # raise
   end
 
   def new
