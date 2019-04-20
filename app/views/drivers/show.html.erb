@@ -8,6 +8,10 @@
 <%= @driver.vin %>
 </p>
 
+<p> Total earnings to date: <%= sprintf("%.2f",@driver.total_earned) %></p>
+
+<p> Average Rating: <%= @driver.avg_rating %></p>
+
 <%= link_to "Edit Driver", edit_driver_path(@driver.id)%>
 <%= link_to "Delete Driver", driver_path(@driver.id), method: :delete%>
 

@@ -5,6 +5,7 @@
 </h3>
 
 <%= @passenger.phone_num %>
+<p> Total spent on all trips: <%= sprintf("%.2f",@passenger.total_spent.to_f) %></p>
 
 <ul>
 <% @passenger.trips.each do |trip| %>
