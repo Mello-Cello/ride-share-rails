@@ -1,6 +1,11 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all
+    if params[:passenger_id]
+      passenger = Passenger.find_by(id: params[:passenger_id])
+      @trips = passenger.trips
+    else
+      @trips = Trip.all
+    end
   end
 
   def show
@@ -9,6 +14,17 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+  end
+
+  def create
+    @trip = Trip.new(trip_params)
+    is_successful = @trip.save
+
+    if is_successful
+      redirect_to trip_path(@trip.id)
+    else
+      render :new, status: :bad_request
+    end
   end
 
   def edit
@@ -28,6 +44,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:date, :rating, :cost)
+    params.require(:trip).permit(:date, :rating, :cost, :passenger_id, :driver_id)
   end
 end
