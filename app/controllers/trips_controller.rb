@@ -14,6 +14,10 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    if params[:passenger_id]
+      passenger = Passenger.find_by(id: params[:passenger_id])
+      @trip = passenger.trips.new
+    end
   end
 
   def create
@@ -29,6 +33,19 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find_by(id: params[:id])
+  end
+
+  def update
+    trip = Trip.find_by(id: params[:id])
+
+    is_successful = trip.update(trip_params)
+
+    if is_successful
+      redirect_to trip_path(trip.id)
+    else
+      @trip = book
+      render :edit, status: :bad_request
+    end
   end
 
   def destroy

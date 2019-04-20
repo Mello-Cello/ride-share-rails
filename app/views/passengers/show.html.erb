@@ -18,7 +18,7 @@
   <%= link_to Driver.find(trip.driver_id).name, driver_path(trip.driver_id)%>
   </li>
    <li> 
-  <%= "Price: $#{trip.cost / 100}"%>
+  <%= "Price: $#{trip.cost.to_f / 100}"%>
   </li>
    <li> 
   <%= "Rating: #{trip.rating}"%>
@@ -42,4 +42,5 @@
 <%= link_to "Delete Passenger", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure you want to delete this passenger?"} %>
 
 </ul>
-<--!  link_to "New Trip", new_trip_path -->
+
+<%= link_to "New Trip for this Passenger", new_passenger_trip_path(@passenger.id)  %>
