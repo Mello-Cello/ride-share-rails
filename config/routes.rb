@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   # add other routes later if needed
 
+  # root to: "books#index"
+
   resources :drivers do
     resources :trips, only: [:index, :new]
   end

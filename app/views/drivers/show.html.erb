@@ -1,21 +1,26 @@
-<h2>Driver Details Page</h2>
+<h2>Driver Details</h2>
 
 <h3>
   <%= @driver.name %>
 </h3>
 
+<p>Vin:
 <%= @driver.vin %>
+</p>
+
+<%= link_to "Edit Driver", edit_driver_path(@driver.id)%>
+<%= link_to "Delete Driver", driver_path(@driver.id), method: :delete%>
 
 <ul>
 <% @driver.trips.each do |trip| %>
-<li>
-  <%= "Trip ID: #{trip.id}"%>
+<li>Trip ID:
+  <%= link_to trip.id, trip_path(trip.id) %>
   </li>
   <li> 
   <%= "Trip Date: #{trip.date}"%>
   </li>
   <li> 
-  <%= link_to "Driver Name: #{Driver.find(trip.driver_id).name}", driver_path(trip.driver_id)%>
+  Passenger:<%= link_to Passenger.find(trip.passenger_id).name, passenger_path(trip.passenger_id)%>
   </li>
    <li> 
   <%= "Price: $#{trip.cost / 100}"%>

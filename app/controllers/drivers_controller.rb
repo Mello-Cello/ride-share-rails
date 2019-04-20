@@ -8,7 +8,7 @@ class DriversController < ApplicationController
   end
 
   def new
-    @drivers = Driver.new
+    @driver = Driver.new
   end
 
   def edit
