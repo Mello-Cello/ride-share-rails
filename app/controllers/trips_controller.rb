@@ -1,11 +1,11 @@
 class TripsController < ApplicationController
   def index
-    if params[:passenger_id]
-      passenger = Passenger.find_by(id: params[:passenger_id])
-      @trips = passenger.trips
-    else
-      @trips = Trip.all
-    end
+    # if params[:passenger_id]
+    #   passenger = Passenger.find_by(id: params[:passenger_id])
+    #   @trips = passenger.trips
+    # else
+    @trips = Trip.all
+    # end
   end
 
   def show
@@ -13,7 +13,15 @@ class TripsController < ApplicationController
   end
 
   def new
-    @trip = Trip.new
+    if params[:passenger_id]
+      passenger = Passenger.find_by(id: params[:passenger_id])
+      @trip = passenger.trips.new
+    elsif params[:driver_id]
+      driver = Driver.find_by(id: params[:driver_id])
+      @trip = driver.trips.new
+    else
+      @trip = Trip.new
+    end
   end
 
   def create
@@ -29,6 +37,19 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find_by(id: params[:id])
+  end
+
+  def update
+    trip = Trip.find_by(id: params[:id])
+
+    is_successful = trip.update(trip_params)
+
+    if is_successful
+      redirect_to trip_path(trip.id)
+    else
+      @trip = book
+      render :edit, status: :bad_request
+    end
   end
 
   def destroy

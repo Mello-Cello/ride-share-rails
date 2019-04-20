@@ -24,8 +24,11 @@ Trip
   <li> Driver:
   <%= link_to Driver.find(@trip.driver_id).name, driver_path(@trip.driver_id)%>
   </li>
+  <li> Passenger:
+  <%= link_to Passenger.find(@trip.passenger_id).name, passenger_path(@trip.passenger_id)%>
+  </li>
    <li> 
-  <%= "Price: $#{@trip.cost / 100}"%>
+  <%= "Price: $#{@trip.cost.to_f / 100}"%>
   </li>
    <li> 
   <%= "Rating: #{@trip.rating}"%>
