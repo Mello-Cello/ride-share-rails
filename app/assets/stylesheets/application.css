@@ -18,6 +18,7 @@
   font-family: Arial, Helvetica, sans-serif;
   list-style-type: none;
   margin: 50px;
+  text-align: center;
 }
 
 h1 {
@@ -66,3 +67,38 @@ ul {
   list-style-type: none;
   color: white;
 }
+
+.show-table, tr {
+  text-align: center;
+  border: 2px solid darkslategray;
+  text-align: center;
+ }
+ 
+ .show-table tr:nth-child(even) {
+  text-align: center;
+  background-color: rgba(118, 53, 155, 0.151);
+  color: white;
+ }
+ 
+ .show-table td {
+  text-align: center;
+  padding: 10px;
+ }
+ 
+ .show-table th {
+  padding: 10px;
+ }
+ 
+ .show-table {
+  margin: 20px;
+ }
+ 
+ .show-table a, .lower-links a, .request-rate a, .show-all-list li a {
+  text-decoration: none;
+  color: white;
+ }
+ 
+ .show-table a:hover, .lower-links a:hover, .request-rate a:hover, .show-all-list li a:hover {
+  text-decoration: underline;
+  color:White;
+ }

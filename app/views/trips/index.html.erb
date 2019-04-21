@@ -1,15 +1,24 @@
 <h1>Trips</h1>
 <div><%= link_to "New Trip", new_trip_path %></div>
 <p>Below is a list of all trips.</p>
+<td><% @trips.each do |trip| %></td>
 
-<% @trips.each do |trip| %>
-<li>
- Trip <%= link_to trip.id, trip_path(trip.id)%> 
- Driver: <%= link_to Driver.find(trip.driver_id).name, driver_path(trip.driver_id)%>
- Passenger: <%= link_to Passenger.find(trip.passenger_id).name, passenger_path(trip.passenger_id)%>
- Date: <%= trip.date %>
- Rating: <%= trip.rating %>
- Cost: <%= sprintf("%.2f", trip.cost.to_f/100) %>
+
+<table class="show-table">
+<tr>
+<th>Trip ID</th>
+<th>Trip Date</th>
+<th>Driver Name</th>
+<th>Price</th>
+<th>Rating</th>
+</tr>
+ 
+ <td>Trip <%= link_to trip.id, trip_path(trip.id)%> </td>
+ <td>Driver: <%= link_to Driver.find(trip.driver_id).name, driver_path(trip.driver_id)%> </td>Driver: <%= link_to Driver.find(trip.driver_id).name, driver_path(trip.driver_id)%>
+ <td>Passenger: <%= link_to Passenger.find(trip.passenger_id).name, passenger_path(trip.passenger_id)%></td>
+ <td>Date: <%= trip.date %></td>
+ <td>Rating: <%= trip.rating %></td>
+ <td>Cost: <%= sprintf("%.2f", trip.cost.to_f/100) %></td>
 
 <%= link_to "Edit Trip", edit_trip_path(trip.id) %>
 
