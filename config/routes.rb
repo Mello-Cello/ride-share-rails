@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # add other routes later if needed
 
-  # root to: "pages#index"
+  root to: "trips#index"
 
   resources :drivers do
     resources :trips, only: [:index, :new]
