@@ -4,32 +4,35 @@
   <%= @passenger.name %>
 </h3>
 
-<%= @passenger.phone_num %>
 <p> Total spent on all trips: <%= sprintf("%.2f",@passenger.total_spent.to_f) %></p>
+<p><%= "Phone Number: #{@passenger.phone_num} " %></p>
 
 <ul>
 <% @passenger.trips.each do |trip| %>
-<li>Trip ID:
-  <%= link_to trip.id, trip_path(trip.id) %>
-  </li>
-  <li> 
-  <%= "Trip Date: #{trip.date}"%>
-  </li>
-  <li>Driver:
-  <%= link_to Driver.find(trip.driver_id).name, driver_path(trip.driver_id)%>
-  </li>
-   <li> 
-  <%= "Price: $#{trip.cost.to_f / 100}"%>
-  </li>
-   <li> 
-  <%= "Rating: #{trip.rating}"%>
-  </li>
-   <li> 
-  <%= link_to "Edit Trip", edit_trip_path(trip.id) %>
-  </li>
-   <li> 
-  <%= link_to "Delete Trip", trip_path(trip.id), method: :delete, data: {confirm: "Are you sure you want to delete this trip?"} %>
-  </li>
+
+<table class="show-table">
+<tr>
+<th>Trip ID</th>
+<th>Trip Date</th>
+<th>Driver Name</th>
+<th>Price</th>
+<th>Rating</th>
+</tr>
+
+<td><%= link_to trip.id, trip_path(trip.id) %></td>
+  
+<td><%= " #{trip.date}"%></td>
+
+<td><%= link_to Driver.find(trip.driver_id).name, driver_path(trip.driver_id)%></td> 
+
+<td><%= " $#{sprintf("%.2f", trip.cost.to_f / 100)}"%></td>
+
+<td><%= " #{trip.rating}"%></td>  
+
+<td><%= link_to "Edit Trip", edit_trip_path(trip.id) %></td>
+  
+<td> <%= link_to "Delete Trip", trip_path(trip.id), method: :delete, data: {confirm: "Are you sure you want to delete this trip?"} %></td>
+ 
   *************************
     <br>
 <% end %>
