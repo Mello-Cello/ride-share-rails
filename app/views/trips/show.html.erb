@@ -8,13 +8,16 @@
 
 <h2>Trip Details</h2>
 
-<h3>
-Trip
-  <%= @trip.id %>
-</h3>
+<h3>Trip <%= @trip.id %></h3>
 
 <ul>
 
+<div class="Rtable Rtable--3cols">
+
+<div style="order:1;" class="Rtable-cell"><h3>Eddard Stark</h3></div>
+<div style="order:2;" class="Rtable-cell">Has a sword named Ice</div>
+<div style="order:3;" class="Rtable-cell">No direwolf</div>
+<div style="order:4;" class="Rtable-cell"><strong>Lord of Winterfell</strong></div>
 <li>
   <%= "Trip ID: #{@trip.id}"%>
   </li>
@@ -28,7 +31,7 @@ Trip
   <%= link_to Passenger.find(@trip.passenger_id).name, passenger_path(@trip.passenger_id)%>
   </li>
    <li> 
-  <%= "Price: $#{@trip.cost.to_f / 100}"%>
+  <%= "Price: $#{sprintf("%.2f", @trip.cost.to_f / 100)}"%>
   </li>
    <li> 
   <%= "Rating: #{@trip.rating}"%>

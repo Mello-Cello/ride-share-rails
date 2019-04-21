@@ -19,7 +19,7 @@
   <%= link_to Driver.find(trip.driver_id).name, driver_path(trip.driver_id)%>
   </li>
    <li> 
-  <%= "Price: $#{trip.cost.to_f / 100}"%>
+  <%= "Price: $#{sprintf("%.2f", trip.cost.to_f / 100)}"%>
   </li>
    <li> 
   <%= "Rating: #{trip.rating}"%>

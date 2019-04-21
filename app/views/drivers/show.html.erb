@@ -1,10 +1,10 @@
-<h2>Driver Details</h2>
+<h1>Driver Details</h1>
 
-<h3>
+<h2>
   <%= @driver.name %>
-</h3>
+</h2>
 
-<p>Vin:
+<p>VIN:
 <%= @driver.vin %>
 </p>
 
@@ -24,10 +24,10 @@
   <%= "Trip Date: #{trip.date}"%>
   </li>
   <li> 
-  Passenger:<%= link_to Passenger.find(trip.passenger_id).name, passenger_path(trip.passenger_id)%>
+  Passenger: <%= link_to Passenger.find(trip.passenger_id).name, passenger_path(trip.passenger_id)%>
   </li>
    <li> 
-  <%= "Price: $#{trip.cost.to_f / 100}"%>
+  <%= "Price: $#{sprintf("%.2f", trip.cost.to_f / 100)}"%>
   </li>
    <li> 
   <%= "Rating: #{trip.rating}"%>

@@ -9,7 +9,7 @@
  Passenger: <%= link_to Passenger.find(trip.passenger_id).name, passenger_path(trip.passenger_id)%>
  Date: <%= trip.date %>
  Rating: <%= trip.rating %>
- Cost: <%= trip.cost.to_f/100 %>
+ Cost: <%= sprintf("%.2f", trip.cost.to_f/100) %>
 
 <%= link_to "Edit Trip", edit_trip_path(trip.id) %>
 
