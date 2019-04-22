@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'homepages/iindex'
   # WE DIDN'T ADD THESE. COMMENTING THEM OUT UNTIL WE KNOW WE NEED THEM.
   # get 'passengers/index'
   # get 'passengers/new'
