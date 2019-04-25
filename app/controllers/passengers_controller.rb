@@ -5,6 +5,7 @@ class PassengersController < ApplicationController
 
   def show
     @passenger = Passenger.find_by(id: params[:id])
+    head :not_found if !@passenger
     # raise
   end
 
@@ -14,6 +15,7 @@ class PassengersController < ApplicationController
 
   def edit
     @passenger = Passenger.find_by(id: params[:id])
+    head :not_found if !@passenger
   end
 
   def update
@@ -24,7 +26,7 @@ class PassengersController < ApplicationController
     if is_successful
       redirect_to passenger_path
     else
-      redirect_to passenger_path
+      render :edit, status: :bad_request
     end
   end
 

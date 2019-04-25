@@ -137,7 +137,7 @@ describe DriversController do
       must_respond_with :redirect
     end
 
-    it "return bad request for an invalid driver" do
+    it "return 404 bad request for an invalid driver" do
       new_driver_name = ""
       new_driver_vin = "2IRS3967"
       bad_driver_params = {
