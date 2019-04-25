@@ -22,7 +22,12 @@ class Driver < ApplicationRecord
       end
       i += 1
     end
-    avg_rating = ratings_total / i
-    return avg_rating.round(2)
+
+    if i > 0
+      avg_rating = ratings_total / i
+      return avg_rating.round(2)
+    else
+      return 0
+    end
   end
 end

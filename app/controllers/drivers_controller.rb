@@ -5,6 +5,7 @@ class DriversController < ApplicationController
 
   def show
     @driver = Driver.find_by(id: params[:id])
+    head :not_found if !@driver
   end
 
   def new
@@ -13,17 +14,18 @@ class DriversController < ApplicationController
 
   def edit
     @driver = Driver.find_by(id: params[:id])
+    head :not_found if !@driver
   end
 
   def update
     this_driver = Driver.find_by(id: params[:id])
-
+    head :not_found if !this_driver
     is_successful = this_driver.update(driver_params)
 
     if is_successful
       redirect_to driver_path
     else
-      redirect_to driver_path
+      render :edit, status: :bad_request
     end
   end
 
