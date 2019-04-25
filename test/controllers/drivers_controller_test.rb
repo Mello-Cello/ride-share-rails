@@ -54,8 +54,8 @@ describe DriversController do
       }.wont_change "Driver.count"
 
       driver_to_update.reload
-      expect(driver_to_update.name).must_equal "Terry Turtle"
-      expect(driver_to_update.vin).must_equal "JEU86U8823HF438"
+      expect(driver_to_update.name).must_equal new_params[:driver][:name]
+      expect(driver_to_update.vin).must_equal new_params[:driver][:vin]
     end
 
     it "respond with 404 not found if updating a non-existant driver" do

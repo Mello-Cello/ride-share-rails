@@ -1,15 +1,11 @@
 class TripsController < ApplicationController
   def index
-    # if params[:passenger_id]
-    #   passenger = Passenger.find_by(id: params[:passenger_id])
-    #   @trips = passenger.trips
-    # else
     @trips = Trip.all
-    # end
   end
 
   def show
     @trip = Trip.find_by(id: params[:id])
+    head :not_found if !@trip
   end
 
   def new
@@ -37,6 +33,7 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find_by(id: params[:id])
+    head :not_found if !@trip
   end
 
   def update
@@ -47,7 +44,7 @@ class TripsController < ApplicationController
     if is_successful
       redirect_to trip_path(trip.id)
     else
-      @trip = book
+      @trip = trip
       render :edit, status: :bad_request
     end
   end
